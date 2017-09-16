@@ -1,25 +1,36 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <table class="table">
-                {% for folder in folders %}
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-3">Welcome to explorer</h1>
+    </div>
+    <table class="table table-hover">
+        <tbody>
+            {% for folder in folders %}
+                <tr>
+                    <td>
+                        <span class="oi oi-folder" title="icon name" aria-hidden="true"></span> {{ folder.name }}
+                    </td>
+                </tr>
+                {% for child in folder.children %}
                     <tr>
-                        <td>{{ folder.name }}</td>
+                        <td>
+                            <span class="oi oi-folder" title="icon name" aria-hidden="true"></span>
+                            {{ child.name }}
+                        </td>
                     </tr>
-                    {% for child in folder.children %}
+                    {% for schild in child.children %}
                         <tr>
-                            <td>{{ child.name }}</td>
+                            <td>
+                                <span class="oi oi-folder" title="icon name" aria-hidden="true"></span>
+                                {{ schild.name }}
+                            </td>
                         </tr>
-                        {% for schild in child.children %}
-                            <tr>
-                                <td>{{ schild.name }}</td>
-                            </tr>
-                        {% endfor %}
                     {% endfor %}
                 {% endfor %}
-            </table>
-        </div>
-    </div>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
