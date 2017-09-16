@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "php bin/console server:run",
-    "db:update": "php bin/console doctrine:schema:update --force"
+    "db:update": "php bin/console doctrine:schema:update --force",
+    "db:migrate": "php bin/console doctrine:migrations:migrate"
   }
 }
