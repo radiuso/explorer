@@ -1,1 +1,8 @@
 $icon-font-path: '~open-iconic/font/fonts/';
+
+$light: #D4DFE6;
+$dark: #6AAFE6;
+
+$level-1: $light;
+$level-2: mix($light, $dark, 80%);
+$level-3: mix($light, $dark, 60%);

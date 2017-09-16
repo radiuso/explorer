@@ -1,0 +1,21 @@
+@import '../variables';
+
+.table {
+  .depth-1 {
+    background-color: $level-1;
+  }
+
+  .depth-2 {
+    background-color: $level-2;
+    td:first-child {
+      padding-left: 2em;
+    }
+  }
+
+  .depth-3 {
+    background-color: $level-3;
+    td:first-child {
+      padding-left: 4em;
+    }
+  }
+}
