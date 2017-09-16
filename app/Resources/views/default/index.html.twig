@@ -1,11 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="container">
-    <div class="jumbotron">
-        <h1 class="display-3">Welcome to explorer</h1>
+<div class="container main-container">
+    <div class="row justify-content-md-center">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input id="search-input" type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="button" id="search-action">
+                        <span class="oi oi-magnifying-glass"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
     </div>
-    <table class="table table-hover">
+
+    <table class="explorer-table table table-hover">
         <tbody>
             {% for folder in folders %}
                 <tr>

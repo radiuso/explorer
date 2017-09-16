@@ -1,4 +1,6 @@
-$icon-font-path: '~open-iconic/font/fonts/';
+@import './variables';
 
 @import '~bootstrap/scss/bootstrap';
 @import '~open-iconic/font/css/open-iconic-bootstrap';
+
+@import './layout/base';

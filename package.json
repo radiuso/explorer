@@ -14,8 +14,10 @@
     "db:migrate": "php bin/console doctrine:migrations:migrate"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-preset-es2017": "^6.24.1",
     "bootstrap": "4.0.0-beta",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.0",
