@@ -8,7 +8,22 @@
   "license": "MIT",
   "scripts": {
     "start": "php bin/console server:run",
+    "assets:build": "webpack",
+    "assets:watch": "webpack --watch",
     "db:update": "php bin/console doctrine:schema:update --force",
     "db:migrate": "php bin/console doctrine:migrations:migrate"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "bootstrap": "4.0.0-beta",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "jquery": "^3.2.1",
+    "node-sass": "^4.5.3",
+    "popper.js": "^1.12.5",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.6.0"
   }
 }

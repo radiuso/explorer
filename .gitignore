@@ -17,3 +17,5 @@
 /web/bundles/
 *.lock
 .idea/*
+node_modules/
+web/assets/
