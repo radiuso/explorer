@@ -1,0 +1,9 @@
+{
+  "name": "explorer",
+  "version": "1.0.0",
+  "description": "simple projet to experiment associated entities manipulation",
+  "main": "index.js",
+  "repository": "https://github.com/radiuso/explorer.git",
+  "author": "radiusario <radiusario@gmail.com>",
+  "license": "MIT"
+}
