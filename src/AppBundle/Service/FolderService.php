@@ -44,12 +44,16 @@ class FolderService
      */
     public function search($val)
     {
-        return $this->getFoldersQuery()
+        $qb = $this->getFoldersQuery();
+
+        if ($val !== '' && $val !== null) {
+            $qb
             ->andWhere('c.name LIKE :filename OR c2.name LIKE :filename')
             ->setParameters([
                 'filename' => "%$val%",
-            ])
-            ->getQuery()
-            ->getResult();
+            ]);
+        }
+
+        return $qb->getQuery()->getResult();
     }
 }

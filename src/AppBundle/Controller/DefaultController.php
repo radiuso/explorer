@@ -6,33 +6,31 @@ use AppBundle\Service\FolderService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
-     * @param FolderService $folderService
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(FolderService $folderService)
+    public function indexAction()
     {
-        $folders = $folderService->getFolders();
-        return $this->render('default/index.html.twig', [
-            'folders' => $folders,
-        ]);
+        return $this->render('default/index.html.twig');
     }
 
     /**
-     * @Route("/search/{research}", name="search")
+     * @Route("/search/{research}", name="search", defaults={"research": null})
      * @param FolderService $folderService
      * @param string $research
-     * @return JsonResponse
+     * @return Response
      */
-    public function searchAction(FolderService $folderService, $research)
+    public function searchAction(FolderService $folderService, $research = null)
     {
         $folders = $folderService->search($research);
-        return new JsonResponse([
-            'folders' => $folders,
-        ]);
+        $serializer = $this->get('jms_serializer');
+        $jsonFolders = $serializer->serialize($folders, 'json');
+
+        return new Response($jsonFolders);
     }
 }

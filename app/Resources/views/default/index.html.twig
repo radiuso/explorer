@@ -17,29 +17,29 @@
 
     <table class="explorer-table table table-hover">
         <tbody>
-            {% for folder in folders %}
-                <tr>
-                    <td>
-                        <span class="oi oi-folder" title="icon name" aria-hidden="true"></span> {{ folder.name }}
-                    </td>
-                </tr>
-                {% for child in folder.children %}
-                    <tr>
-                        <td>
-                            <span class="oi oi-folder" title="icon name" aria-hidden="true"></span>
-                            {{ child.name }}
-                        </td>
-                    </tr>
-                    {% for schild in child.children %}
-                        <tr>
-                            <td>
-                                <span class="oi oi-folder" title="icon name" aria-hidden="true"></span>
-                                {{ schild.name }}
-                            </td>
-                        </tr>
-                    {% endfor %}
-                {% endfor %}
-            {% endfor %}
+            {#{% for folder in folders %}#}
+                {#<tr>#}
+                    {#<td>#}
+                        {#<span class="oi oi-folder" title="icon name" aria-hidden="true"></span> {{ folder.name }}#}
+                    {#</td>#}
+                {#</tr>#}
+                {#{% for child in folder.children %}#}
+                    {#<tr>#}
+                        {#<td>#}
+                            {#<span class="oi oi-folder" title="icon name" aria-hidden="true"></span>#}
+                            {#{{ child.name }}#}
+                        {#</td>#}
+                    {#</tr>#}
+                    {#{% for schild in child.children %}#}
+                        {#<tr>#}
+                            {#<td>#}
+                                {#<span class="oi oi-folder" title="icon name" aria-hidden="true"></span>#}
+                                {#{{ schild.name }}#}
+                            {#</td>#}
+                        {#</tr>#}
+                    {#{% endfor %}#}
+                {#{% endfor %}#}
+            {#{% endfor %}#}
         </tbody>
     </table>
 </div>
