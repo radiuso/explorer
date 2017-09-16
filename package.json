@@ -2,8 +2,12 @@
   "name": "explorer",
   "version": "1.0.0",
   "description": "simple projet to experiment associated entities manipulation",
-  "main": "index.js",
+  "main": "web/app.php",
   "repository": "https://github.com/radiuso/explorer.git",
   "author": "radiusario <radiusario@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "php bin/console server:run",
+    "db:update": "php bin/console doctrine:schema:update --force"
+  }
 }

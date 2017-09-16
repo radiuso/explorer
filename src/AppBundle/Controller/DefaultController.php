@@ -2,20 +2,22 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Service\FolderService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
+     * @param FolderService $folderService
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request)
+    public function indexAction(FolderService $folderService)
     {
-        // replace this example code with whatever you need
+        $folders = $folderService->getFolders();
         return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            'folders' => $folders,
         ]);
     }
 }
