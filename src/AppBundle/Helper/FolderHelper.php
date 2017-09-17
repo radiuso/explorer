@@ -1,12 +1,12 @@
 <?php
 
-namespace AppBundle\Service;
+namespace AppBundle\Helper;
 
 use AppBundle\Entity\Folder;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 
-class FolderService
+class FolderHelper
 {
     /** @var  EntityManager */
     protected  $em;
@@ -26,6 +26,9 @@ class FolderService
             ->select('f, c')
             ->leftJoin('f.children', 'c')
             ->leftJoin('c.children', 'c2')
+            ->leftJoin('f.files', 'file')
+            ->leftJoin('c.files', 'filec')
+            ->leftJoin('c2.files', 'filec2')
             ->where('f.parent IS NULL');
     }
 
@@ -48,10 +51,15 @@ class FolderService
 
         if ($val !== '' && $val !== null) {
             $qb
-            ->andWhere('c.name LIKE :filename OR c2.name LIKE :filename')
-            ->setParameters([
-                'filename' => "%$val%",
-            ]);
+                ->andWhere('f.name LIKE :filename 
+                OR c.name LIKE :filename
+                OR c2.name LIKE :filename
+                OR file.name LIKE :filename
+                OR filec.name LIKE :filename
+                OR filec2.name LIKE :filename')
+                ->setParameters([
+                    'filename' => "%$val%",
+                ]);
         }
 
         return $qb->getQuery()->getResult();

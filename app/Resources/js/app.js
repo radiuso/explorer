@@ -47,6 +47,15 @@ const addFolderRow = (rows, folder, depth = 1) => {
     depth: depth,
   });
 
+  // add files
+  folder.files.forEach((file) => {
+    rows.push({
+      name: file.name,
+      depth: depth,
+      type: 'file',
+    });
+  });
+
   // add children
   if (depth < 5) {
     folder.children.forEach((child) => {
@@ -57,17 +66,29 @@ const addFolderRow = (rows, folder, depth = 1) => {
   return rows;
 };
 
-const renderFolders = (folders) => {
+const renderFolders = (rows) => {
   let res = '';
-  folders.forEach((folder) => {
-    res += `
-      <tr class="depth-${folder.depth}">
-        <td>
-            <span class="oi oi-folder" title="icon name" aria-hidden="true"></span> 
-            ${folder.name}
-        </td>
-      </tr>
-    `;
+  rows.forEach((row) => {
+    if (row.type === 'file') {
+      res += `
+        <tr class="depth-${row.depth} file">
+          <td>
+              <span class="oi oi-file" title="file" aria-hidden="true"></span> 
+              ${row.name}
+          </td>
+        </tr>
+      `;
+    }
+    else {
+      res += `
+        <tr class="depth-${row.depth}">
+          <td>
+              <span class="oi oi-folder" title="folder" aria-hidden="true"></span> 
+              ${row.name}
+          </td>
+        </tr>
+      `;
+    }
   });
 
   $('.explorer-table tbody')

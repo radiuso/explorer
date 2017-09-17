@@ -10,12 +10,24 @@
     td:first-child {
       padding-left: 2em;
     }
+
+    &.file {
+      td:first-child {
+        padding-left: 4em;
+      }
+    }
   }
 
   .depth-3 {
     background-color: $level-3;
     td:first-child {
       padding-left: 4em;
+    }
+
+    &.file {
+      td:first-child {
+        padding-left: 6em;
+      }
     }
   }
 }

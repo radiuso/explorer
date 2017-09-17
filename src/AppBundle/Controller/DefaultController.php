@@ -2,10 +2,9 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Service\FolderService;
+use AppBundle\Helper\FolderHelper;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
@@ -21,11 +20,11 @@ class DefaultController extends Controller
 
     /**
      * @Route("/search/{research}", name="search", defaults={"research": null})
-     * @param FolderService $folderService
+     * @param FolderHelper $folderService
      * @param string $research
      * @return Response
      */
-    public function searchAction(FolderService $folderService, $research = null)
+    public function searchAction(FolderHelper $folderService, $research = null)
     {
         $folders = $folderService->search($research);
         $serializer = $this->get('jms_serializer');
