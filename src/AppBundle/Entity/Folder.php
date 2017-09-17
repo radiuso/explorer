@@ -38,6 +38,13 @@ class Folder
     protected $parent;
 
     /**
+     * @ORM\OneToMany(targetEntity="File", mappedBy="folder")
+     * @ORM\JoinColumn(name="id", referencedColumnName="folder_id", nullable=false)
+     * @var array
+     */
+    protected $files;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -106,6 +113,24 @@ class Folder
     public function setChildren($children)
     {
         $this->children = $children;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFiles(): array
+    {
+        return $this->files;
+    }
+
+    /**
+     * @param array $files
+     * @return Folder
+     */
+    public function setFiles(array $files): Folder
+    {
+        $this->files = $files;
         return $this;
     }
 }
