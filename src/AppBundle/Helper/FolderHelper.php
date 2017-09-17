@@ -23,7 +23,7 @@ class FolderHelper
     {
         return $this->em->getRepository(Folder::class)
             ->createQueryBuilder('f')
-            ->select('f, c')
+            ->select('f, c, c2, file, filec, filec2')
             ->leftJoin('f.children', 'c')
             ->leftJoin('c.children', 'c2')
             ->leftJoin('f.files', 'file')
